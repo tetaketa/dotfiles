@@ -1,0 +1,17 @@
+[user]
+    name =
+    email =
+[color]
+    ui = auto
+[core]
+    excludesfile = /home/hoge/.gitignore
+    editor = /usr/bin/vim
+[alias]
+    co = checkout
+    st = status
+    ci = commit -v
+    di = diff
+    ds = diff --staged
+    br = branch
+    up = pull --rebase
+    graph = log --pretty=format:\"%C(yellow)%h%Creset %C(magenta)%ad%Creset | %s%Cred%d%Creset [%Cgreen%an%Creset]\" --graph --date=short
