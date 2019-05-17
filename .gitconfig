@@ -1,10 +1,10 @@
 [user]
-    name =
-    email =
+    name = TAKETANI Tetsuya
+    email = taketani@mediba.jp
 [color]
     ui = auto
 [core]
-    excludesfile = /home/hoge/.gitignore
+    excludesfile = /Users/taketani/.gitignore
     editor = /usr/bin/vim
 [alias]
     co = checkout
@@ -14,4 +14,8 @@
     ds = diff --staged
     br = branch
     up = pull --rebase
+    pd = pull --rebase origin develop
     graph = log --pretty=format:\"%C(yellow)%h%Creset %C(magenta)%ad%Creset | %s%Cred%d%Creset [%Cgreen%an%Creset]\" --graph --date=short
+    showpr = !"f() { git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1; }; f"
+[init]
+	templatedir = /Users/taketani/.git_template/

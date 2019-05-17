@@ -7,6 +7,7 @@ setopt AUTO_PARAM_KEYS
 setopt COMPLETE_IN_WORD
 setopt PROMPT_SUBST
 setopt share_history
+setopt noflowcontrol
 
 #fpath=(~/.zsh/functions/Completion ${fpath})
 autoload -Uz compinit; compinit
@@ -35,8 +36,28 @@ PROMPT='%6Fdev[%n]%f%6F%1v%f%6F$ %f'
 
 RPROMPT='%{[36m%}%~%{[m%}'
 
+# path
+export PATH="/usr/local/opt:/usr/local/bin:$PATH"
+
+
+# php
+# export PATH=/usr/local/php5/bin:$PATH
+# export PATH="$(brew --prefix homebrew/php/php72)/bin:$PATH"
+export PATH=/usr/local/opt/php/bin:$PATH
+
+# composer
+export PATH="/Users/taketani/bin:/Users/taketani/.composer/vendor/bin:$PATH"
+
+# scala 
+export SCALA_HOME="$HOME/bin/scala"
+export PATH="$PATH:/$SCALA_HOME/bin"
+export PATH="$PATH:/$HOME/bin/activator-minimal"
+
 # go
 export GOPATH="$HOME/opt/go"
+
+# empbulk
+export PATH="$HOME/.embulk/bin:$PATH"
 
 export LESS='-R'
 export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
@@ -53,6 +74,26 @@ export WORDCHARS="*?_-.[]~&;!#$%^(){}<>="
 #node npm
 export NVM_DIR=$HOME/.nvm
 export PATH=$PATH:$HOME/bin:/usr/lib/fluent/ruby/bin
+
+# rbenv
+[[ -d ~/.rbenv  ]] && \
+  export PATH=${HOME}/.rbenv/shims:${PATH} && \
+  eval "$(rbenv init -)"
+
+# chrome
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# openssl
+export PATH="/usr/local/Cellar/openssl/1.0.2q/bin:$PATH"
+
+# history search
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^S' history-incremental-pattern-search-forward
 
 function agvim () {
   vim $(ag $@ | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
@@ -132,3 +173,18 @@ if [ "$TERM" = "screen" ]; then
     }
     chpwd
 fi
+
+# The next line updates PATH for the Google Cloud SDK.
+#source '/Users/taketani/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+#source '/Users/taketani/google-cloud-sdk/completion.zsh.inc'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/taketani/bin/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/taketani/bin/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/taketani/bin/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/taketani/bin/google-cloud-sdk/completion.zsh.inc'; fi
+
+# added by travis gem
+[ -f /Users/taketani/.travis/travis.sh ] && source /Users/taketani/.travis/travis.sh
