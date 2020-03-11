@@ -10,6 +10,8 @@ setopt share_history
 setopt noflowcontrol
 
 #fpath=(~/.zsh/functions/Completion ${fpath})
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+
 autoload -Uz compinit; compinit
 autoload -U colors
 HISTSIZE=100000
@@ -55,6 +57,7 @@ export PATH="$PATH:/$HOME/bin/activator-minimal"
 
 # go
 export GOPATH="$HOME/opt/go"
+export PATH="/usr/local/go/bin:$PATH"
 
 # empbulk
 export PATH="$HOME/.embulk/bin:$PATH"
@@ -64,6 +67,7 @@ export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
 
 alias ls="ls -F"
 alias gitdiff="git diff -p --color | diff-highlight | less"
+alias dcc="docker-compose"
 
 export WORDCHARS="*?_-.[]~&;!#$%^(){}<>="
 
@@ -84,9 +88,9 @@ export PATH=$PATH:$HOME/bin:/usr/lib/fluent/ruby/bin
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
 # pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init -)"
 
 # openssl
 export PATH="/usr/local/Cellar/openssl/1.0.2q/bin:$PATH"
