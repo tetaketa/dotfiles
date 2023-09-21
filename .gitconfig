@@ -1,6 +1,6 @@
 [user]
     name = TAKETANI Tetsuya
-    email = taketani@mediba.jp
+    email = tetsuya.taketani@sowxp.co.jp
 [color]
     ui = auto
 [core]
@@ -10,12 +10,15 @@
     co = checkout
     st = status
     ci = commit -v
-    di = diff
+    di = diff -u
     ds = diff --staged
     br = branch
+    bru = branch --format='%(authoremail) %(refname:short)'
+    brme = !"f() { git branch --format='%(authoremail) %(refname:short)' | grep tetsuya | cut -f 2 -d ' '; }; f"
     up = pull --rebase
     pd = pull --rebase origin develop
     graph = log --pretty=format:\"%C(yellow)%h%Creset %C(magenta)%ad%Creset | %s%Cred%d%Creset [%Cgreen%an%Creset]\" --graph --date=short
     showpr = !"f() { git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1; }; f"
+    
 [init]
 	templatedir = /Users/taketani/.git_template/

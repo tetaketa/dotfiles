@@ -39,8 +39,10 @@ PROMPT='%6Fdev[%n]%f%6F%1v%f%6F$ %f'
 RPROMPT='%{[36m%}%~%{[m%}'
 
 # path
-export PATH="/usr/local/opt:/usr/local/bin:$PATH"
+export PATH="/usr/local/opt:/usr/local/bin:$HOME/bin:$PATH"
 
+# mysql client path
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
 # php
 # export PATH=/usr/local/php5/bin:$PATH
@@ -59,15 +61,20 @@ export PATH="$PATH:/$HOME/bin/activator-minimal"
 export GOPATH="$HOME/opt/go"
 export PATH="/usr/local/go/bin:$PATH"
 
-# empbulk
+# embulk
 export PATH="$HOME/.embulk/bin:$PATH"
 
 export LESS='-R'
 export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
 
+# alias
 alias ls="ls -F"
 alias gitdiff="git diff -p --color | diff-highlight | less"
-alias dcc="docker-compose"
+alias dcc="docker compose"
+
+# aws cli
+alias aws_stg="AWS_PROFILE=stg aws"
+alias aws_prd="AWS_PROFILE=prd aws"
 
 export WORDCHARS="*?_-.[]~&;!#$%^(){}<>="
 
@@ -75,14 +82,24 @@ export WORDCHARS="*?_-.[]~&;!#$%^(){}<>="
 #export PATH="/home/hoge/.phpenv/bin:$PATH"
 #eval "$(phpenv init -)"
 
+#nvm
+#export NVM_DIR="$HOME/.nvm"
+#  [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+#  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+#nodenv
+eval "$(nodenv init -)"
+
 #node npm
-export NVM_DIR=$HOME/.nvm
 export PATH=$PATH:$HOME/bin:/usr/lib/fluent/ruby/bin
 
 # rbenv
 [[ -d ~/.rbenv  ]] && \
   export PATH=${HOME}/.rbenv/shims:${PATH} && \
   eval "$(rbenv init -)"
+
+# direnv
+eval "$(direnv hook zsh)"
 
 # chrome
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
@@ -91,6 +108,9 @@ alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 #export PYENV_ROOT="$HOME/.pyenv"
 #export PATH="$PYENV_ROOT/bin:$PATH"
 #eval "$(pyenv init -)"
+
+# psql
+export PATH="/usr/local/opt/libpq/bin:$PATH"
 
 # openssl
 export PATH="/usr/local/Cellar/openssl/1.0.2q/bin:$PATH"
